@@ -1,6 +1,6 @@
 {
   "name": "@jmonzone/design",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Shared React UI components and styles for my apps: buttons, and a three.js card pack opener.",
   "license": "MIT",
   "type": "module",
