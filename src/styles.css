@@ -1,0 +1,127 @@
+/* Londrina Solid: SIL Open Font License 1.1, see fonts/OFL.txt. */
+@font-face {
+  font-family: "Londrina Solid";
+  src: url("./fonts/LondrinaSolid-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+:root {
+  --jd-font-body: "Londrina Solid", sans-serif;
+}
+
+/* ---- Button ---- */
+
+/* Each variant only sets --jd-button-bg/-border/-shadow; a caller can too, through `style`. */
+.jd-button {
+  --jd-button-bg: rgba(255, 255, 255, 0.08);
+  --jd-button-border: rgba(255, 255, 255, 0.12);
+  --jd-button-shadow: none;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 0;
+  background: var(--jd-button-bg);
+  border: 1px solid var(--jd-button-border);
+  color: rgba(255, 255, 255, 0.95);
+  font-family: var(--jd-font-body);
+  font-weight: bold;
+  line-height: normal;
+  cursor: pointer;
+  opacity: 1;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.jd-button--sm {
+  padding: 10px 6px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.jd-button--lg {
+  min-height: 52px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  box-shadow: var(--jd-button-shadow);
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.jd-button--primary {
+  --jd-button-bg: linear-gradient(to bottom, rgba(95, 155, 215, 0.8), rgba(55, 110, 190, 0.8));
+  --jd-button-border: rgba(85, 150, 210, 0.75);
+  --jd-button-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.jd-button--secondary {
+  --jd-button-bg: linear-gradient(to bottom, rgba(85, 150, 215, 0.75), rgba(50, 95, 180, 0.75));
+  --jd-button-border: rgba(85, 135, 205, 0.75);
+  --jd-button-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 -3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.jd-button--selected {
+  --jd-button-bg: linear-gradient(to bottom, rgba(210, 160, 55, 0.85), rgba(200, 120, 30, 0.85));
+  --jd-button-border: rgba(195, 145, 50, 0.8);
+  --jd-button-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), inset 0 -3px 0 rgba(0, 0, 0, 0.35),
+    0 0 12px rgba(200, 130, 30, 0.25);
+}
+
+.jd-button--confirm {
+  --jd-button-bg: linear-gradient(to bottom, rgba(60, 175, 95, 0.8), rgba(35, 135, 65, 0.8));
+  --jd-button-border: rgba(50, 160, 85, 0.75);
+  --jd-button-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.jd-button--deny {
+  --jd-button-bg: linear-gradient(to bottom, rgba(200, 75, 75, 0.8), rgba(155, 40, 40, 0.8));
+  --jd-button-border: rgba(200, 65, 65, 0.75);
+  --jd-button-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -3px 0 rgba(0, 0, 0, 0.35);
+}
+
+.jd-button--warning {
+  --jd-button-bg: linear-gradient(to bottom, rgba(245, 158, 11, 0.85), rgba(202, 120, 5, 0.85));
+  --jd-button-border: rgba(245, 158, 11, 0.75);
+  --jd-button-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -3px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* After the variants, so it wins over them. */
+.jd-button--subdued {
+  --jd-button-bg: rgba(55, 95, 160, 0.3);
+  --jd-button-border: rgba(85, 135, 205, 0.35);
+  --jd-button-shadow: none;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* Wins over every variant and subdued. opacity: 1 keeps a host's `button:disabled { opacity }` from fading it again. */
+.jd-button:disabled {
+  --jd-button-bg: rgba(255, 255, 255, 0.04);
+  --jd-button-border: rgba(255, 255, 255, 0.08);
+  --jd-button-shadow: none;
+  color: rgba(255, 255, 255, 0.3);
+  text-shadow: none;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .jd-button:not(:disabled):hover {
+    transform: translateY(-1px);
+    filter: brightness(1.15);
+  }
+}
+
+.jd-button__hint {
+  padding: 2px 5px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.3);
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+}
