@@ -41,7 +41,9 @@
   font-size: 12px;
 }
 
+/* The standard width: as wide as the app lays it out, up to 200px. */
 .jd-button--lg {
+  max-width: 200px;
   min-height: 52px;
   padding: 14px 16px;
   border-radius: 14px;

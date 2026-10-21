@@ -15,7 +15,7 @@ Shared UI components for my apps (fungal-web, pack-opener): `Button`, and the ca
 import "@jmonzone/design/styles.css"; // once, in the app's entry, before the app's own CSS
 import { Button } from "@jmonzone/design";
 
-<Button variant="confirm" hint="ENTER" onClick={save}>Save</Button>
+<Button variant="confirm" onClick={save}>Save</Button> // Enter presses it; it shows an ENTER badge
 ```
 
 `Button` takes every `<button>` prop plus:
@@ -25,9 +25,13 @@ import { Button } from "@jmonzone/design";
 | `variant` | `default` `primary` `secondary` `selected` `confirm` `deny` `warning` | |
 | `size` | `sm` `lg` | `sm` for `default`, `lg` for the rest, unless set |
 | `subdued` | boolean | a quieter look |
-| `hint` | ReactNode | a small badge after the label, e.g. a key |
+| `hotkey` | `{ key, label }` or `null` | the key that presses it, while it has an `onClick` and isn't disabled; Enter for `confirm`, Escape for `deny`, unless set |
+| `hotkeyEnabled` | boolean | `false` keeps the badge but stops the key pressing it |
+| `hint` | ReactNode | the badge after the label: the hotkey's (none while `subdued`), unless set |
 
-Layout (width, `flex`) is the app's: pass `style` or `className`.
+Touch screens never show the badge. Hotkeys go through `KeyHandlerManager`, one stack per key where only the latest binding gets the key, so a modal's Enter beats the screen's under it. An app binds its own keys with `useKeyHandler` (or `KeyHandlerManager.push`) so they share that stack.
+
+An `lg` button is at most 200px wide, the standard width. The rest of layout (`width`, `flex`) is the app's: pass `style` or `className`.
 
 ## Pack opener
 
